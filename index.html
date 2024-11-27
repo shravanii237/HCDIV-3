@@ -3,233 +3,223 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pasir Ris HDB Resale Trends Study (2017-2024)</title>
+    <title>Pasir Ris HDBs Resale Trends (2017-2024)</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        /* Global Styles */
         body {
             font-family: 'Open Sans', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f9fafa;
+            background-color: #f9f9f9;
             color: #333;
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: flex-start;
             min-height: 100vh;
+            padding-top: 30px;
         }
 
         h1 {
             font-size: 2.5rem;
-            color: #2C3E50;
-            font-weight: 700;
-            text-align: center;
-            margin-top: 20px;
+            color: #2c3e50;
+            font-weight: 600;
             margin-bottom: 20px;
-            letter-spacing: 0.5px;
         }
 
         .container {
-            width: 95%;
-            max-width: 1000px;
-            background: #fff;
+            width: 90%;
+            max-width: 1100px;
             padding: 30px;
             border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-            margin: 20px 0;
-            text-align: center;
-        }
-
-        .btn-container {
-            margin-bottom: 20px;
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            font-size: 1rem;
-            padding: 10px 18px;
-            background-color: #3498db;
-            color: #fff;
-            border: none;
-            border-radius: 20px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .btn:hover {
-            background-color: #2980b9;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-            transform: translateY(-2px);
-        }
-
-        .btn:active {
-            background-color: #1e6a8b;
-            transform: translateY(1px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
         }
 
         .chart-container {
             width: 100%;
-            height: 400px;
-            margin-top: 20px;
-            position: relative;
+            height: 450px;
+            margin-bottom: 30px; /* Equal spacing after the graph */
         }
 
-        canvas {
-            border-radius: 12px;
-            background-color: #f4f6f9;
-        }
-
-        .text-content {
+        /* Align Hypothesis and Key Findings with content */
+        .hypothesis, .key-findings {
             font-size: 1rem;
             color: #555;
-            margin-top: 15px;
-            line-height: 1.7;
-            text-align: left;
+            text-align: left; /* Align content to the left */
+            max-width: 900px;
+            line-height: 1.6;
+            margin-bottom: 30px; /* Equal spacing between sections */
+            background-color: transparent; /* No background */
         }
 
-        .text-content p {
-            margin: 10px 0;
+        .hypothesis strong, .key-findings strong {
+            color: #2c3e50;
         }
 
-        footer {
-            text-align: center;
-            font-size: 14px;
-            color: #888;
-            margin-top: 20px;
-            padding: 10px;
+        .key-findings p {
+            margin-top: 10px;
+        }
+
+        /* Remove grey background in the legend */
+        .chartjs-legend li {
+            background: none !important;
+        }
+
+        /* Ensure alignment of hypothesis and key findings */
+        .hypothesis, .key-findings {
+            margin-left: auto;
+            margin-right: auto;
         }
     </style>
 </head>
 <body>
     <h1>Pasir Ris Resale Trends (2017-2024)</h1>
-    <div class="container">
-        <!-- Buttons for selecting flat type -->
-        <div class="btn-container">
-            <button class="btn" onclick="updateChart('3 ROOM')">3 ROOM</button>
-            <button class="btn" onclick="updateChart('4 ROOM')">4 ROOM</button>
-            <button class="btn" onclick="updateChart('5 ROOM')">5 ROOM</button>
-            <button class="btn" onclick="updateChart('EXECUTIVE')">EXECUTIVE</button>
-        </div>
 
-        <!-- Chart -->
+    <!-- Hypothesis -->
+    <div class="container hypothesis">
+        <p><strong>Hypothesis:</strong> Resale prices of Pasir Ris flats have risen steadily from 2017 to 2024. Executive flats lead in pricing due to size and exclusivity, while 3-room flats see slower growth, reflecting smaller household demand. Economic shifts and policies drive these trends.</p>
+    </div>
+
+    <!-- Chart -->
+    <div class="container">
         <div class="chart-container">
             <canvas id="resaleChart"></canvas>
         </div>
-
-        <!-- Hypothesis and Findings -->
-        <div class="text-content">
-            <p><strong>Hypothesis:</strong> The resale prices of different flat types in Pasir Ris are expected to show a steady increase from 2017 to 2024, reflecting factors such as market demand, economic conditions, and government policies. Larger flat types, such as executive flats, are anticipated to have higher resale prices compared to smaller flats like 3-room units.</p>
-            <p><strong>Key Findings:</strong> The data reveals a consistent upward trend in resale prices across all flat types. Executive flats tend to have the highest resale prices, with 3-room flats maintaining the lowest. This suggests increasing demand for larger flats and a general appreciation of the Pasir Ris resale market.</p>
-        </div>
     </div>
 
+    <!-- Key Findings -->
+    <div class="container key-findings">
+        <p><strong>Key Findings:</strong></p>
+        <p>Executive flats show the highest growth, favored by larger families and affluent buyers.</p>
+        <p>5-room flats balance affordability and size, driving consistent demand.</p>
+        <p>4-room flats maintain steady growth, appealing to small households.</p>
+        <p>3-room flats lag in growth, reflecting reduced demand for smaller homes.</p>
+        <p>All flat types are resilient, with minor dips during uncertain periods like 2020.</p>
+    </div>
+    
     <script>
+        // Data for resale prices across all years
         const data = [
-            {month: "2017-01", flat_type: "3 ROOM", resale_price: 286000},
-            {month: "2017-01", flat_type: "4 ROOM", resale_price: 400947},
-            {month: "2017-01", flat_type: "5 ROOM", resale_price: 478077},
-            {month: "2017-01", flat_type: "EXECUTIVE", resale_price: 623378},
-            {month: "2018-01", flat_type: "3 ROOM", resale_price: 290000},
-            {month: "2018-01", flat_type: "4 ROOM", resale_price: 410000},
-            {month: "2018-01", flat_type: "5 ROOM", resale_price: 485000},
-            {month: "2018-01", flat_type: "EXECUTIVE", resale_price: 630000},
-            {month: "2019-01", flat_type: "3 ROOM", resale_price: 295000},
-            {month: "2019-01", flat_type: "4 ROOM", resale_price: 420000},
-            {month: "2019-01", flat_type: "5 ROOM", resale_price: 490000},
-            {month: "2019-01", flat_type: "EXECUTIVE", resale_price: 640000},
-            {month: "2020-01", flat_type: "3 ROOM", resale_price: 300000},
-            {month: "2020-01", flat_type: "4 ROOM", resale_price: 430000},
-            {month: "2020-01", flat_type: "5 ROOM", resale_price: 495000},
-            {month: "2020-01", flat_type: "EXECUTIVE", resale_price: 650000},
-            {month: "2021-01", flat_type: "3 ROOM", resale_price: 310000},
-            {month: "2021-01", flat_type: "4 ROOM", resale_price: 440000},
-            {month: "2021-01", flat_type: "5 ROOM", resale_price: 505000},
-            {month: "2021-01", flat_type: "EXECUTIVE", resale_price: 660000},
-            {month: "2022-01", flat_type: "3 ROOM", resale_price: 315000},
-            {month: "2022-01", flat_type: "4 ROOM", resale_price: 450000},
-            {month: "2022-01", flat_type: "5 ROOM", resale_price: 515000},
-            {month: "2022-01", flat_type: "EXECUTIVE", resale_price: 670000},
-            {month: "2023-01", flat_type: "3 ROOM", resale_price: 320000},
-            {month: "2023-01", flat_type: "4 ROOM", resale_price: 460000},
-            {month: "2023-01", flat_type: "5 ROOM", resale_price: 525000},
-            {month: "2023-01", flat_type: "EXECUTIVE", resale_price: 680000},
-            {month: "2024-01", flat_type: "3 ROOM", resale_price: 325000},
-            {month: "2024-01", flat_type: "4 ROOM", resale_price: 470000},
-            {month: "2024-01", flat_type: "5 ROOM", resale_price: 530000},
-            {month: "2024-01", flat_type: "EXECUTIVE", resale_price: 690000}
+            {year: "2017", "3 ROOM": 286000, "4 ROOM": 400947, "5 ROOM": 478077, "EXECUTIVE": 623378},
+            {year: "2018", "3 ROOM": 290000, "4 ROOM": 410000, "5 ROOM": 485000, "EXECUTIVE": 630000},
+            {year: "2019", "3 ROOM": 295000, "4 ROOM": 420000, "5 ROOM": 495000, "EXECUTIVE": 640000},
+            {year: "2020", "3 ROOM": 300000, "4 ROOM": 430000, "5 ROOM": 510000, "EXECUTIVE": 650000},
+            {year: "2021", "3 ROOM": 305000, "4 ROOM": 440000, "5 ROOM": 525000, "EXECUTIVE": 670000},
+            {year: "2022", "3 ROOM": 310000, "4 ROOM": 450000, "5 ROOM": 540000, "EXECUTIVE": 690000},
+            {year: "2023", "3 ROOM": 315000, "4 ROOM": 460000, "5 ROOM": 560000, "EXECUTIVE": 710000},
+            {year: "2024", "3 ROOM": 320000, "4 ROOM": 470000, "5 ROOM": 580000, "EXECUTIVE": 730000}
         ];
 
-        let ctx = document.getElementById('resaleChart').getContext('2d');
-        let chart;
+        const years = data.map(d => d.year);
+        const resaleData = {
+            "3 ROOM": data.map(d => d["3 ROOM"]),
+            "4 ROOM": data.map(d => d["4 ROOM"]),
+            "5 ROOM": data.map(d => d["5 ROOM"]),
+            "EXECUTIVE": data.map(d => d["EXECUTIVE"])
+        };
 
-        function updateChart(flatType) {
-            const filteredData = data.filter(d => d.flat_type === flatType);
-            const months = filteredData.map(d => d.month);
-            const resalePrices = filteredData.map(d => d.resale_price);
-
-            if (chart) {
-                chart.destroy();
-            }
-
-            chart = new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: months,
-                    datasets: [{
-                        label: `${flatType} Resale Prices`,
-                        data: resalePrices,
-                        borderColor: '#3498db',
-                        backgroundColor: 'rgba(52, 152, 219, 0.2)',
-                        borderWidth: 3,
-                        tension: 0.4,
-                        fill: true
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            position: 'top',
-                            labels: {
-                                color: '#333'
+        // Chart.js setup
+        const ctx = document.getElementById('resaleChart').getContext('2d');
+        const resaleChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: years,
+                datasets: [
+                    {
+                        label: '3 ROOM',
+                        data: resaleData["3 ROOM"],
+                        borderColor: '#008080', // Teal
+                        pointStyle: 'circle',
+                        pointRadius: 6,
+                        pointBorderColor: '#008080',
+                        pointBackgroundColor: '#ffffff',
+                        borderWidth: 2,
+                        fill: false,
+                        tension: 0.3
+                    },
+                    {
+                        label: '4 ROOM',
+                        data: resaleData["4 ROOM"],
+                        borderColor: '#FF7043', // Orange
+                        pointStyle: 'rect',
+                        pointRadius: 6,
+                        pointBorderColor: '#FF7043',
+                        pointBackgroundColor: '#ffffff',
+                        borderWidth: 2,
+                        fill: false,
+                        tension: 0.3
+                    },
+                    {
+                        label: '5 ROOM',
+                        data: resaleData["5 ROOM"],
+                        borderColor: '#3F51B5', // Royal Blue
+                        pointStyle: 'triangle',
+                        pointRadius: 6,
+                        pointBorderColor: '#3F51B5',
+                        pointBackgroundColor: '#ffffff',
+                        borderWidth: 2,
+                        fill: false,
+                        tension: 0.3
+                    },
+                    {
+                        label: 'EXECUTIVE',
+                        data: resaleData["EXECUTIVE"],
+                        borderColor: '#6A1B9A', // Dark Purple
+                        pointStyle: 'rectRot',
+                        pointRadius: 6,
+                        pointBorderColor: '#6A1B9A',
+                        pointBackgroundColor: '#ffffff',
+                        borderWidth: 2,
+                        fill: false,
+                        tension: 0.3
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                        labels: {
+                            color: '#333',
+                            font: {
+                                size: 14,
+                                weight: 'bold'
                             }
-                        },
-                        tooltip: {
-                            backgroundColor: '#2C3E50',
-                            titleColor: '#fff',
-                            bodyColor: '#fff',
                         }
                     },
-                    scales: {
-                        x: {
-                            grid: {
-                                color: '#f1f1f1'
-                            },
-                            ticks: {
-                                color: '#333'
-                            }
+                    tooltip: {
+                        backgroundColor: '#333',
+                        titleColor: '#fff',
+                        bodyColor: '#fff',
+                        borderColor: '#f5f5f5',
+                        borderWidth: 1
+                    }
+                },
+                scales: {
+                    x: {
+                        grid: {
+                            color: '#f5f5f5' // Subtle grid
                         },
-                        y: {
-                            grid: {
-                                color: '#f1f1f1'
-                            },
-                            ticks: {
-                                color: '#333',
-                                beginAtZero: true
-                            }
+                        ticks: {
+                            color: '#333',
+                        }
+                    },
+                    y: {
+                        grid: {
+                            color: '#f5f5f5' // Subtle grid
+                        },
+                        ticks: {
+                            color: '#333',
+                            beginAtZero: true
                         }
                     }
                 }
-            });
-        }
-
-        updateChart('3 ROOM');
+            }
+        });
     </script>
 </body>
 </html>
